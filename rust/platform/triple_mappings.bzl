@@ -212,7 +212,10 @@ def triple_to_system(triple):
     if len(component_parts) < 3:
         fail("Expected target triple to contain at least three sections separated by '-'")
 
-    return component_parts[2]
+    system = component_parts[2]
+    if (system == "androideabi"):
+        system = "android"
+    return system
 
 def triple_to_arch(triple):
     """Returns a system architecture name for a given platform triple
@@ -289,6 +292,10 @@ def triple_to_constraint_set(triple):
     vendor = component_parts[1]
     system = component_parts[2]
     abi = None
+
+    if system == "androideabi":
+        system = "android"
+        cpu_arch = "arm"
 
     if len(component_parts) == 4:
         abi = component_parts[3]
