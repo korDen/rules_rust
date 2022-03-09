@@ -201,11 +201,39 @@ def abi_to_constraints(abi):
 def triple_to_system(target_triple):
     """Returns a system name for a given platform triple
 
+    **Deprecated**: Use triple() from triple.bzl directly.
+
     Args:
         target_triple (str): A platform triple. eg: `x86_64-unknown-linux-gnu`
 
     Returns:
         str: A system name
+    """
+    return triple(target_triple).system
+
+def triple_to_arch(target_triple):
+    """Returns a system architecture name for a given platform triple
+
+    **Deprecated**: Use triple() from triple.bzl directly.
+
+    Args:
+        target_triple (str): A platform triple. eg: `x86_64-unknown-linux-gnu`
+
+    Returns:
+        str: A cpu architecture
+    """
+    return triple(target_triple).arch
+
+def triple_to_abi(target_triple):
+    """Returns a system abi name for a given platform triple
+
+    **Deprecated**: Use triple() from triple.bzl directly.
+
+    Args:
+        target_triple (str): A platform triple. eg: `x86_64-unknown-linux-gnu`
+
+    Returns:
+        str: The triple's abi
     """
     return triple(target_triple).system
 
